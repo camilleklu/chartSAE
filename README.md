@@ -1,6 +1,6 @@
-# chartSAE
+# ChartSAE
 
-# composition de l'équipe
+# Composition de l'équipe
 
 Camille Kluck
 Célestine Mahieux
