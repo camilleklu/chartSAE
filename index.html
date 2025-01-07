@@ -1,59 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta.tab2, .tab3, .tab4, .tab5set="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
- <div class="tab1">
-      <div style="width: 50%;">
-          <canvas id="canvas1"></canvas>
-      </div>
 
-      <div style="width: 50%;">
-        <canvas id="canvas2"></canvas>
+  <div class="tab1">
+    <h1>Le temps passer pour le même nombre de variable</h1>
+    <div class="graph_nom">
+    <div style="width: 48%;">
+      <canvas id="canvas1"></canvas>
     </div>
-  
- </div>
 
-
-<!-- En fonction du name  -->
-   <label for="nameSelect">Choisir un nom</label>
-   <select id="nameSelect">
-       <option value="">Choisir un nom</option>
-   </select>
+    <div style="width: 48%;">
+      <canvas id="canvas2"></canvas>
+    </div>
   </div>
-   <div style="width: 100%;">
-       <canvas id="canvas"></canvas>
-   </div>
-  
-
-
-<div class="tab2">
-  
-  <div style="width: 50%;">
-    <canvas id="canvas4"></canvas>
   </div>
 
 
-  <div style="width: 50%;">
+  <div class="tab2">
+      <h1>Information d'un programme</h1>
+      <select id="nameSelect" class="button">
+        <option value="">Choisir un nom</option>
+      </select>
+    <div class="graph_nom">
+      <div style="width: 48%;">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div style="width: 48%;">
+        <canvas id="canvas4"></canvas>
+      </div>
+    </div>
+  </div>
+
+<div class="tab3">
+  <h1>Le global des status</h1>
+  <div style="width: 50%;" class="camembert">
     <canvas id="canvas3"></canvas>
   </div>
-  
 </div>
-
-
-
-    <script src="bar.js" defer></script>
-    <script src="barv2.js" defer></script>
-    <script src="camembert.js" defer></script>
-    <script src="time.js" defer></script>
+  <script src="bar.js" defer></script>
+  <script src="barv2.js" defer></script>
+  <script src="camembert.js" defer></script>
+  <script src="time.js" defer></script>
 
 
 
 </body>
+
 </html>
