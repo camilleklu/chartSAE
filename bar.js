@@ -9,7 +9,7 @@ fetch("results.json")
 
     // Préparer les données pour le graphique
     const labels = data.map((item) => item.name); // Utiliser les noms pour les labels
-    const dataset = data.map((item) => (item.time));
+    const dataset = data.map((item) => item.time);
 
     const ctx = document.getElementById("canvas1").getContext("2d");
 
