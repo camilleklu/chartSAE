@@ -10,7 +10,7 @@ fetch("results.json")
 
     // Préparer les données pour le graphique
     const labels = data.map((item) => item.name); // Utiliser les noms pour les labels
-    const dataset = data.map((item) => parseFloat(item.time)); // Temps converti en nombres
+    const dataset = data.map((item) => (item.time));
 
     // Sélectionner le canvas du HTML
     const ctx = document.querySelector("canvas").getContext("2d");
