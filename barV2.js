@@ -7,16 +7,18 @@ fetch("results.json")
     );
     const data = table.data; // Données de la table "results"
 
+    data.sort((a, b) => a.nb_variables - b.nb_variables);
+
     // Préparer les données pour le graphique
-    const labels = data.map((item) => item.name); // Utiliser les noms pour les labels
+    const variables = data.map((item) => item.nb_variables); // Utiliser les noms pour les labels
     const dataset = data.map((item) => parseFloat(item.time)); // Temps converti en nombres
 
-    const ctx = document.getElementById("canvas1").getContext("2d");
+    const ctx = document.getElementById("canvas2").getContext("2d");
 
     new Chart(ctx, {
       type: "bar", // Type de graphique (barre)
       data: {
-        labels: labels, // Labels pour l'axe X
+        labels: variables, // Labels pour l'axe X
         datasets: [
           {
             label: "Temps d'exécution (en secondes)",
