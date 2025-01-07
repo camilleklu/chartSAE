@@ -25,22 +25,20 @@ fetch("results.json")
       nameSelect.appendChild(option);
     });
 
-    // Fonction pour créer ou mettre à jour le graphique linéaire
     function updateLineChart(name) {
       const nameData = groupedData[name];
 
       // Trier les données en fonction de nbVariables
       const sortedData = nameData
-        .map((item) => [parseInt(item.nb_variables), parseFloat(item.time)]) // Convertir les valeurs en nombres
+        .map((item) => [parseInt(item.nb_variables), parseFloat(item.time)])
         .sort((a, b) => a[0] - b[0]);
 
-      // Extraire les axes X et Y triés
       const nbVariables = sortedData.map((item) => item[0]);
       const times = sortedData.map((item) => item[1]);
 
       const ctx = document.getElementById("canvas").getContext("2d");
 
-      // Créer un graphique linéaire si non existant, sinon le mettre à jour
+      // Créer ou mettre à jour le graphique linéaire
       if (window.myLineChart) {
         window.myLineChart.data.labels = nbVariables;
         window.myLineChart.data.datasets[0].data = times;
@@ -52,7 +50,7 @@ fetch("results.json")
             labels: nbVariables,
             datasets: [
               {
-                label: `Time for ${name}`,
+                label: `Temps pour ${name}`,
                 data: times,
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
@@ -62,8 +60,22 @@ fetch("results.json")
           },
           options: {
             scales: {
-              x: { title: { display: true, text: "Nb Variables" } },
-              y: { title: { display: true, text: "Time" }, beginAtZero: true },
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true, // Activer le titre de l'axe
+                    labelString: "Nombre de Variables", // Texte du titre
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true, // Activer le titre de l'axe
+                    labelString: "Temps (s)", // Texte du titre
+                  },
+                },
+              ],
             },
           },
         });
