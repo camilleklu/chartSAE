@@ -6,7 +6,6 @@ fetch("results.json")
     );
     const data = table.data;
 
-    // Regrouper les données par nom
     const groupedData = {};
     data.forEach((item) => {
       const name = item.name;
@@ -16,7 +15,6 @@ fetch("results.json")
       groupedData[name].push(item);
     });
 
-    // Ajouter les options dans le select
     const nameSelect = document.getElementById("nameSelect");
     Object.keys(groupedData).forEach((name) => {
       const option = document.createElement("option");
@@ -28,7 +26,6 @@ fetch("results.json")
     function updateLineChart(name) {
       const nameData = groupedData[name];
 
-      // Trier les données en fonction de nbVariables
       const sortedData = nameData
         .map((item) => [parseInt(item.nb_variables), parseFloat(item.time)])
         .sort((a, b) => a[0] - b[0]);
@@ -38,7 +35,6 @@ fetch("results.json")
 
       const ctx = document.getElementById("canvas").getContext("2d");
 
-      // Créer ou mettre à jour le graphique linéaire
       if (window.myLineChart) {
         window.myLineChart.data.labels = nbVariables;
         window.myLineChart.data.datasets[0].data = times;
@@ -63,16 +59,16 @@ fetch("results.json")
               xAxes: [
                 {
                   scaleLabel: {
-                    display: true, // Activer le titre de l'axe
-                    labelString: "Nombre de Variables", // Texte du titre
+                    display: true,
+                    labelString: "Nombre de Variables",
                   },
                 },
               ],
               yAxes: [
                 {
                   scaleLabel: {
-                    display: true, // Activer le titre de l'axe
-                    labelString: "Temps (s)", // Texte du titre
+                    display: true,
+                    labelString: "Temps (s)",
                   },
                 },
               ],
@@ -82,11 +78,9 @@ fetch("results.json")
       }
     }
 
-    // Fonction pour créer ou mettre à jour le graphique circulaire
     function updatePieChart(name) {
       const nameData = groupedData[name];
 
-      // Compter les statuts pour ce nom
       const statusCounts = nameData.reduce((acc, item) => {
         acc[item.status] = (acc[item.status] || 0) + 1;
         return acc;
@@ -104,7 +98,6 @@ fetch("results.json")
 
       const ctx = document.getElementById("canvas4").getContext("2d");
 
-      // Créer un graphique pie si non existant, sinon le mettre à jour
       if (window.myPieChart) {
         window.myPieChart.data.labels = labels;
         window.myPieChart.data.datasets[0].data = percentages;
@@ -144,7 +137,6 @@ fetch("results.json")
       }
     }
 
-    // Écouter les changements dans le select pour mettre à jour les deux graphiques
     nameSelect.addEventListener("change", (event) => {
       const selectedName = event.target.value;
       if (selectedName) {
